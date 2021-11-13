@@ -1,16 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap')
+  
 *
   margin: 0
   padding: 0
+  font-family: 'Roboto', sans-serif
 
 .App
-  color: red
   min-height: 100vh
+  padding: 50px 0
   width: 100%
+  background-color: #eee
   display: flex
   justify-content: center
-  align-items: center
-  flex-direction: column
+
+.container
+  width: 100%
+  max-width: 720px
+  padding: 30px
+  box-sizing: border-box
+  background-color: #fff
+  box-shadow: 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 3px 3px -2px rgb(0 0 0 / 12%), 0px 1px 8px 0px rgb(0 0 0 / 20%)
 
 .iframeContainer
   width: 100%
   min-height: 100vh
+
+@media screen and (max-width: 750px)
+  .App
+    padding: 0
+  .container
+    padding: 10px
