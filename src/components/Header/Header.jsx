@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Header.module.sass'
 
-const Header = () => {
+const Header = ({onClickInstall}) => {
     return (
         <>
             <div className={styles.container}>
@@ -56,7 +56,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className={styles.installBtnContainer}>
-                        <button>Установить</button>
+                        <button onClick={() => onClickInstall()}>Установить</button>
                     </div>
                 </div>
             </div>

@@ -1,37 +1,56 @@
-import React , {useEffect} from 'react';
+import React , {useEffect, useState} from 'react';
 import './App.sass';
 import Iframe from 'react-iframe'
 import Header from './components/Header/Header';
+import usePWA from 'react-pwa-install-prompt'
+
 
 const App = () => {
-  let deferredPrompt;
+  const { isStandalone, isInstallPromptSupported, promptInstall } = usePWA()
+  const [isDownloaded, setIsDownloaded] = useState(false)
+  const domain = 'https://test10jklger.xyz/'
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-      deferredPrompt = e;
-  });
-
-  const installHandler = async() => {
-    if (deferredPrompt !== null) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(outcome)
-      if (outcome === 'accepted') {
-          deferredPrompt = null;
-      }
+  const onClickInstall = async () => {
+    const didInstall = await promptInstall()
+    if (didInstall) {
+      // User accepted PWA install
+      localStorage.setItem('link', window.location.search)
     }
   }
 
+  // let deferredPrompt;
 
+  // window.addEventListener('beforeinstallprompt', (e) => {
+  //     deferredPrompt = e;
+  // });
+
+  // const installHandler = async() => {
+  //   if (deferredPrompt !== null) {
+  //     deferredPrompt.prompt();
+  //     const { outcome } = await deferredPrompt.userChoice;
+  //     console.log(outcome)
+  //     if (outcome === 'accepted') {
+  //         deferredPrompt = null;
+  //     }
+  //   }
+  // }
 
   return (
     <div className="App">
-      <div className="container">
-        <Header />
-      </div>
-      {/* <button onClick={installHandler} className="installApp">install app</button> */}
-      {/* <Iframe url="https://test10jklger.xyz/?start=index&domain=mbchainhrates.xyz&description=1111&cip=222&fbclid=123&GCLID=123&utm_source=123&utm_campaign=345&utm_content=678&pixel=test&ttq=test&term=test&ym=228"
-        className="iframeContainer"
-        /> */}
+      
+      {/* <button onClick={onClickInstall} className="installApp">install app</button> */}
+      {
+        localStorage.getItem('link')
+          ? <Iframe url={domain + localStorage.getItem('link')}
+          className="iframeContainer"
+          />
+          : <div className="container">
+          <Header 
+            onClickInstall={() => onClickInstall()}
+          />
+        </div>
+      }
+      
     </div>
   )
 }
