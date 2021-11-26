@@ -3,18 +3,26 @@ import './App.sass';
 import Iframe from 'react-iframe'
 import Header from './components/Header/Header';
 import usePWA from 'react-pwa-install-prompt'
+import {SliderComp} from "./components/Slider/Slider";
+import {Description} from "./components/Description/Description";
+import {New} from "./components/New/New";
+import {Reviews} from "./components/Reviews/Reviews";
+import {Footer} from "./components/Footer/Footer";
 
 
 const App = () => {
   const { isStandalone, isInstallPromptSupported, promptInstall } = usePWA()
   const [isDownloaded, setIsDownloaded] = useState(false)
-  const domain = 'https://test10jklger.xyz/'
+  const domain = 'https://yuchainmontgf.xyz/'
 
   const onClickInstall = async () => {
     const didInstall = await promptInstall()
     if (didInstall) {
       // User accepted PWA install
-      localStorage.setItem('link', window.location.search)
+      let location = window.location.search
+      // location = location.split('?')
+      // localStorage.setItem('link3', '&' + location[1])
+      localStorage.setItem('link', location)
     }
   }
 
@@ -48,6 +56,14 @@ const App = () => {
           <Header 
             onClickInstall={() => onClickInstall()}
           />
+          <SliderComp/>
+          <Description/>
+          <div className={'line'}></div>
+          <New/>
+          <div className={'line'}></div>
+          <Reviews/>
+          <div className={'line'}></div>
+          <Footer/>
         </div>
       }
       

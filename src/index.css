@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.slick-slide {
+  margin: 0 4px!important;
+}
+.line {
+  height: 1px;
+  background-color: #eaeaea;
+  width: 95%;
+}

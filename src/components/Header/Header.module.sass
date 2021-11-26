@@ -33,14 +33,29 @@
 
 .typeOfApp
     margin-left: 15px
-
+.apperStarsBlock
+    display: flex
+    align-items: center
+    p
+      color: #8d8d8d
+      font-weight: 700
+      font-size: 13px
+      text-align: right
 .ageContainer
+    display: flex
+    align-items: center
     margin-top: 10px
     border: 1px solid black
     width: 25px
     margin-bottom: 20px
     p
         font-size: 14px
+    span
+        margin-left: 10px
+        font-size: 13px
+        font-weight: 700
+        line-height: 1
+        color: #737373
 
 .support
     color: #737373
@@ -77,6 +92,7 @@
     justify-content: space-between
 
 .starsContainer
+    margin-top: 5px
     display: flex
     align-items: center
 
@@ -106,8 +122,28 @@
         min-width: 40px
         &:hover
             background-color: #7c9d60
-        
+.installBtnContainerPhone
+    margin-top: 20px
+    display: none
+    button
+        width: 100%
+        background-color: #689F38
+        color: white
+        line-height: 36px
+        cursor: pointer
+        border-radius: 4px
+        outline: 0
+        border: 1px solid #fff
+        font-size: 14px
+        padding: 0 20px
+        box-sizing: border-box
+        transition: .3s
+        font-weight: 500
+        min-width: 40px
+        &:hover
 @media screen and (max-width: 750px)
+    .installBtnContainerPhone
+        display: block
     .canDownloadContainer 
         display: none
     
@@ -143,3 +179,4 @@
         img
             width: 20px
             height: 20px
+    .container
