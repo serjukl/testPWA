@@ -55,7 +55,7 @@ export  const Reviews = () => {
                 </div>
             </div>
             <div style={{marginTop: '20px'}}>
-                {arrCommnets.map((com)=><Comment text={com.text} name={com.name} like={com.like} img={com.img} date={com.data}/>)}
+                {arrCommnets.map((com)=><Comment key={com.img} text={com.text} name={com.name} like={com.like} img={com.img} date={com.data}/>)}
             </div>
         </div>
     )

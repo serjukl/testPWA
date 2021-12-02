@@ -14,16 +14,16 @@ export  const SliderComp = () => {
     return (
         <div className={styles.sliderWrapper}>
             <Slider {...settings}>
-                <div>
+                <div className={styles.imgWrapper}>
                     <img src={'images/slider/slide_1.png'}/>
                 </div>
-                <div>
+                <div className={styles.imgWrapper}>
                     <img src={'images/slider/slide_2.png'}/>
                 </div>
-                <div>
+                <div className={styles.imgWrapper}>
                     <img src={'images/slider/slide_3.png'}/>
                 </div>
-                <div>
+                <div className={styles.imgWrapper}>
                     <img src={'images/slider/slide_3.png'}/>
                 </div>
             </Slider>

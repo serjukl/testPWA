@@ -8,6 +8,7 @@
     height: 180px
     img
         width: 100%
+        border-radius: 10px
 
 .descriptionContainer
     display: flex
@@ -122,10 +123,10 @@
         min-width: 40px
         &:hover
             background-color: #7c9d60
-.installBtnContainerPhone
-    margin-top: 20px
+.mobile_button
     display: none
     button
+        margin-top: 15px
         width: 100%
         background-color: #689F38
         color: white
@@ -141,7 +142,60 @@
         font-weight: 500
         min-width: 40px
         &:hover
+            background-color: #7c9d60
+.mobile_position
+    display: none
+.blockIconAle
+    padding: 0 3px
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: space-around
+    p
+        text-align: center
+.textUnder
+    font-size: 12px
+.wrapIcon
+    display: flex
+    align-items: center
+    img
+    margin-left: 5px
+.wrapIconDownload
+    img
+        height: 25px
+        width: auto
+        background-color: transparent
+.iconsWrapper
+    display: none
+    position: relative
+    padding: 10px 20px
+    justify-content: space-around
+.wrapIconAge
+    p
+        background-color: #3C3F41
+        padding: 2px 5px
+        color: white
+.lineWrapper
+    height: 100%
+    display: flex
+    align-items: center
+.line
+    top: 20px
+    position: absolute
+    height: 30px
+    border-right: 1px solid gray
+
 @media screen and (max-width: 750px)
+    .iconsWrapper
+        display: flex
+    .addToWishList
+        display: none
+    .mobile_position
+        display: flex
+        align-items: center
+        flex-direction: column
+    .mobile_button
+        display: block
     .installBtnContainerPhone
         display: block
     .canDownloadContainer 
@@ -180,3 +234,13 @@
             width: 20px
             height: 20px
     .container
+.back_line
+    position: relative
+    background-color: #C7DDD6
+    height: 5px
+    border-radius: 5px
+    width: 100%
+.progresive_line
+    background-color: #02885d
+    height: 5px
+    border-radius: 5px

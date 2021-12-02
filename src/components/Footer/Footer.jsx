@@ -12,7 +12,7 @@ export  const Footer = () => {
                     <div className={styles.blockMenu}><b>Текущая версия</b><p>2.0</p></div>
                 </div>
                 <div>
-                    <div className={styles.blockMenu}><b>Размер</b><p>4.8 MB</p></div>
+                    <div className={styles.blockMenu}><b>Размер</b><p>10 MB</p></div>
                     <div className={styles.blockMenu}><b>Возраст</b><p>18+</p></div>
                 </div>
                 <div>

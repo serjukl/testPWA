@@ -1,7 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './Header.module.sass'
 
-const Header = ({onClickInstall}) => {
+const Header = ({onClickInstall , isLoad, isLoadAnim, setLoadAnim}) => {
+    let [button, setButtonS]= useState(false)
+    let [valueMB, setValueMB]= useState('0.0')
+    let startLoad = ()=>{
+        const times = ['2.3', '4.7', '7.7', '10']
+        let i = 0, howManyTimes = 4;
+
+        const tmpFunc = () => {
+            setValueMB(times[i])
+            i++
+            if (i < howManyTimes) {
+                setTimeout(tmpFunc, 700);
+            }
+            if(i === 4){
+                setLoadAnim(false)
+                setButtonS(true)
+            }
+        }
+        tmpFunc()
+        console.log('alets')
+    }
+
+    useEffect(()=>{
+        startLoad()
+
+    },[isLoadAnim])
+
     return (
         <>
             <div className={styles.container}>
@@ -53,14 +79,73 @@ const Header = ({onClickInstall}) => {
                            </div>
                        </div>
                     </div>
+                    {!isLoadAnim &&
                     <div className={styles.installBtnContainer}>
-                        <button onClick={() => onClickInstall()}>Установить</button>
+                        <button onClick={() => onClickInstall()}>{isLoad}</button>
+                    </div>
+                    }
+                    {isLoadAnim &&
+                    <div>
+                        <p>{valueMB}/10MB</p>
+                        <div className={styles.back_line}>
+                            <div style={{width:`${valueMB * 10}%`}} className={styles.progresive_line}>
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div className={styles.iconsWrapper}>
+                <div className={styles.blockIconAle}>
+                    <div className={styles.wrapIcon}>
+                        <p>4.9</p>
+                        <img src={'images/header/star.png'}/>
+                    </div>
+                    <p className={styles.textUnder}>20&nbsp;тыс.</p>
+                </div>
+                <div className={styles.lineWrapper}>
+                    <div className={styles.line}>
+
+                    </div>
+                </div>
+                <div className={styles.blockIconAle}>
+                    <div className={styles.wrapIconDownload}>
+                        <img src={'images/donload_2.png'}/>
+                    </div>
+                    <p className={styles.textUnder}>10&nbsp;MB</p>
+                </div>
+                <div className={styles.lineWrapper}><div className={styles.line}></div></div>
+                <div className={styles.blockIconAle}>
+                    <div className={styles.wrapIconAge}>
+                        <p>12+</p>
+                    </div>
+                    <p className={styles.textUnder}> 12&nbsp;+</p>
+                </div>
+                <div className={styles.lineWrapper}><div className={styles.line}></div></div>
+                <div className={styles.blockIconAle}>
+                    <div className={styles.wrapIcon}>
+                        <p>100&nbsp;тыс.</p>
+                    </div>
+                    <p className={styles.textUnder}>Скачивания</p>
+                </div>
+            </div>
+            {!isLoadAnim &&
+            <div className={styles.mobile_button}>
+                <button onClick={() => onClickInstall()}>{isLoad}</button>
+            </div>
+            }
+
+            {isLoadAnim &&
+            <div className={styles.mobile_position}>
+                <p>{valueMB}/10MB</p>
+                <div className={styles.back_line}>
+                    <div style={{width:`${valueMB * 10}%`}} className={styles.progresive_line}>
+
                     </div>
                 </div>
             </div>
-            <div className={styles.installBtnContainerPhone}>
-                <button onClick={() => onClickInstall()}>Установить</button>
-            </div>
+            }
         </>
     )
 }

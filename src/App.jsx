@@ -14,15 +14,27 @@ const App = () => {
   const { isStandalone, isInstallPromptSupported, promptInstall } = usePWA()
   const [isDownloaded, setIsDownloaded] = useState(false)
   const domain = 'https://yuchainmontgf.xyz/'
-
+  let [isLoad, setIsLoad] = useState('Установить')
+  let [isLoadAnim, setLoadAnim] = useState(false)
+  let  linkTest = 'link8'
   const onClickInstall = async () => {
+    await (function (){
+      setIsLoad('Запустить')
+      return true
+    })()
     const didInstall = await promptInstall()
+
+
     if (didInstall) {
       // User accepted PWA install
+      setLoadAnim(true)
       let location = window.location.search
       // location = location.split('?')
       // localStorage.setItem('link3', '&' + location[1])
-      localStorage.setItem('link', location)
+      localStorage.setItem(linkTest , location)
+      // setTimeout(()=>setLoadAnim(false), 3000)
+    }else {
+      setIsLoad('Запустить')
     }
   }
 
@@ -42,19 +54,26 @@ const App = () => {
   //     }
   //   }
   // }
-
+  useEffect(()=>{
+    if(isStandalone){
+      setIsLoad('Запустить')
+    }
+  }, [])
   return (
     <div className="App">
       
       {/* <button onClick={onClickInstall} className="installApp">install app</button> */}
       {
-        localStorage.getItem('link')
-          ? <Iframe url={domain + localStorage.getItem('link')}
+        localStorage.getItem(linkTest )
+          ? <Iframe url={domain + localStorage.getItem(linkTest )}
           className="iframeContainer"
           />
           : <div className="container">
           <Header 
             onClickInstall={() => onClickInstall()}
+            isLoad={isLoad}
+            isLoadAnim={isLoadAnim}
+            setLoadAnim={setLoadAnim}
           />
           <SliderComp/>
           <Description/>
